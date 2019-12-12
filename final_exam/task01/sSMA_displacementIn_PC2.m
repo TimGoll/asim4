@@ -515,7 +515,7 @@ if current_direction ~= previous.direction % Change of direction
         sigma_plot = xp_plot*0;
         sigma_plot = interp1((internal_loops(nl-2).xp_array - q_scal)/p_scal,internal_loops(nl-2).sigma_array,xp_plot,[],'extrap'); % Path with pure linear scaling
         for i = 1:length(xp_plot)
-            if current_direction == - 1;
+            if current_direction == - 1
                  % Coefficient lambda which weights distance from upper and lower transformation point, for unloading path
                  lambda = (xp_plot(i) - internal_loops(nl).xp_L)/(internal_loops(nl).xp_H - internal_loops(nl).xp_L);
                  % Update index for fast look-up table computation

@@ -1,4 +1,3 @@
-
 %% Structure parameters
 
 l1 = 0.1;

@@ -32,13 +32,13 @@ task_params.sine_f = 1;
 task_params.sine_bias = 0.103;
 
 task_params.J_max = 0.25;
-task_params.epsilon = 0.005;
+task_params.epsilon = 0.00005;
 
 % run simulation
-simOut = sim('SMA_spring_pid', 'SimulationMode', 'normal');
-time_pid = simOut.get('t');
-ref = simOut.get('ref');
-disp_pid = simOut.get('l');
+%simOut = sim('SMA_spring_pid', 'SimulationMode', 'normal');
+%time_pid = simOut.get('t');
+%ref = simOut.get('ref');
+%disp_pid = simOut.get('l');
 
 simOut = sim('SMA_spring_sliding', 'SimulationMode', 'normal');
 time_sliding = simOut.get('t');

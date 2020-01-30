@@ -9,7 +9,7 @@ Parameter_PC2;
 % init task
 path_arr = strsplit(mfilename('fullpath'), {'/', '\'});
 task_name = string(path_arr(end-1));
-disp('running ' + task_name);
+disp('running' + task_name);
 
 path_arr(end) = [];
 path_arr(end) = [];
@@ -20,9 +20,9 @@ plot_path = strjoin(path_arr, '/');
 a_0 = 14.93;
 b_0 = -0.2891;
 tau_star = 0.015;
-N = 20;
+N = 2;
 
-mode = 'forward euler';
+mode = 'forward euler N =' + string(N) + ' Windup';
 
 % set extra variables
 task_params = struct;
@@ -41,8 +41,10 @@ task_params.Ts = tau_star / N;
 
 simOut = sim('SMA_spring', 'SimulationMode', 'normal');
 time = simOut.get('t');
-disp = simOut.get('l');
+dispdigit = simOut.get('l');
 input = simOut.get('input');
+dispanalog = simOut.get('l1');
+joulheating = simOut.get('J');
 
-paw({time_sliding, time_sliding}, {disp, input}, {'displacement', 'input'}, 'time [s]', 'diplacement [m]', task_name, 'pid' + mode, plot_path, true, true);
+paw({time, time, time}, {dispdigit, dispanalog,input}, {'displacement (digital)', 'displacement (analog)','input'}, 'time [s]', 'diplacement [m]', task_name, 'pid' + mode, plot_path, true, true);
 

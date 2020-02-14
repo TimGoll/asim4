@@ -25,7 +25,7 @@ task_params = struct;
 %task_params.I = 1.2;
 
 % run simulation
-simOut = simulate('SMAWing_01', do_rerun);
+simOut = simulate('SMAWing_02', do_rerun);
 time = simOut.get('time');
 J_SMA_1A = simOut.get('J_SMA_1A');
 J_SMA_1B = simOut.get('J_SMA_1B');

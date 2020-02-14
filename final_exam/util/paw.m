@@ -1,4 +1,4 @@
-function [] = paw(data_x, data_y, data_title, label_x, label_y, task, title, folder, do_legend, do_write)
+function [] = paw(data_x, data_y, data_title, label_x, label_y, task, title, folder, do_legend, do_write, mode)
     do_legend = do_legend || false;
     do_write  = do_write || false;
 
@@ -8,8 +8,14 @@ function [] = paw(data_x, data_y, data_title, label_x, label_y, task, title, fol
 
     data_length = size(data_y, 2); %x is always the same
 
-    for i=1:1:data_length %iterate over plot array
-        plot(data_x{i}, data_y{i}, 'DisplayName', data_title{i}, 'Linewidth', 2);
+    if (exist('mode','var'))
+        for i=1:1:data_length %iterate over plot array
+            plot(data_x{i}, data_y{i}, mode{i}, 'DisplayName', data_title{i}, 'Linewidth', 2);
+        end
+    else
+        for i=1:1:data_length %iterate over plot array
+            plot(data_x{i}, data_y{i}, 'DisplayName', data_title{i}, 'Linewidth', 2);
+        end
     end
 
     grid;

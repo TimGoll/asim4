@@ -34,5 +34,9 @@ J_SMA_2B = simOut.get('J_SMA_2B');
 theta_1 = simOut.get('theta_1');
 theta_2 = simOut.get('theta_2');
 
-paw({time, time, time, time}, {J_SMA_1A, J_SMA_1B, J_SMA_2A, J_SMA_2B}, {'J_{SMA,1A}', 'J_{SMA,1B}', 'J_{SMA,2A}', 'J_{SMA,2B}'}, 'time [s]', 'J_{SMA} [W]', task_name, 'J_SMA', plot_path, true, true);
-paw({time, time}, {theta_1, theta_2}, {'theta_1', 'theta_2'}, 'time [s]', 'theta', task_name, 'theta', plot_path, true, true);
+paw({time, time, time, time}, {J_SMA_1A, J_SMA_1B, J_SMA_2A, J_SMA_2B}, {'J_{SMA,1A}', 'J_{SMA,1B}', 'J_{SMA,2A}', 'J_{SMA,2B}'}, 'time [s]', 'J_{SMA} [W]', task_name, 'J_SMA_1_and_2', plot_path, true, true,{'--','',':','-.'},'southwest');
+paw({time, time}, {J_SMA_1A, J_SMA_1B}, {'J_{SMA,1A}', 'J_{SMA,1B}'}, 'time [s]', 'J_{SMA} [W]', task_name, 'J_SMA_1_a_and_b', plot_path, true, true,{'--',''},'southwest');
+paw({time, time}, {J_SMA_2A, J_SMA_2B}, {'J_{SMA,2A}', 'J_{SMA,2B}'}, 'time [s]', 'J_{SMA} [W]', task_name, 'J_SMA_2_a_and_b', plot_path, true, true,{'--',''},'southwest');
+paw({time, time}, {theta_1, theta_2}, {'theta_1', 'theta_2'}, 'time [s]', 'theta', task_name, 'theta_1_and_2', plot_path, true, true,{'',''},'southwest');
+paw({time, time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'theta_1', plot_path, true, true,{''},'southwest');
+paw({time, time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'theta_2', plot_path, true, true,{''},'southwest');

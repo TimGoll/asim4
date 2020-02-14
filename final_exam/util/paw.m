@@ -1,6 +1,11 @@
-function [] = paw(data_x, data_y, data_title, label_x, label_y, task, title, folder, do_legend, do_write, mode)
+function [] = paw(data_x, data_y, data_title, label_x, label_y, task, title, folder, do_legend, do_write, mode, location)
     do_legend = do_legend || false;
     do_write  = do_write || false;
+    
+    if (~exist('location','var'))
+        location  = "northeast";
+    end
+    
 
     % create figute
     this_fig = figure('Name', title);
@@ -25,7 +30,7 @@ function [] = paw(data_x, data_y, data_title, label_x, label_y, task, title, fol
     ylabel(label_y);
 
     if (do_legend)
-        legend show;
+        legend('Location', location);
     end
 
     set(gca, 'FontSize', 18);

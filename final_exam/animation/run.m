@@ -20,7 +20,7 @@ L = 5;
 filename = 'testAnimated.gif';
 n=1;
 
-for i = 1 : 25 : size(theta_1) 
+for i = 1 : 15 : size(theta_1) 
     h = figure(n);   
  
     theta1 = theta_1(i)/180*pi;
@@ -41,6 +41,7 @@ for i = 1 : 25 : size(theta_1)
     axis equal;
     xlim([-15 15])
     ylim([-15 15])
+    set(gca,'visible','off');
     
     line([0 0.5],[0 1],'color','k','Linewidth',2);
     line([0.5 1],[1 0],'color','k','Linewidth',2);

@@ -37,21 +37,22 @@ task_params.noise_2_start = 0;
 task_params.noise_2_start_b = 8;
 
 delta = 0.707;
-k = 586.9; %586.9 - 675.49
-p1 = 11.89; %0.3653 - 11.67
-p2 = 0.3653; %11.89 - 0.4316
+                % noisy  - sine   - jumps
+k = 586.9;      % 586.9  - 675.49 -
+p1 = 11.89;     % 11.89  - 11.67  -
+p2 = 0.3653;    % 0.3653 - 0.4316 -
 
 task_params.P = p1^2 / (4 * k * delta^2);
 task_params.I = p2 * p1^2 / (4 * k * delta^2);
 task_params.D = 0;
 
 % run simulation
-simOut = simulate('SMAWing_03_PID', do_rerun);
+simOut = simulate('SMAWing_03_step', do_rerun);
 time = simOut.get('time');
 u1 = simOut.get('u1');
 u2 = simOut.get('u2');
 theta_1 = simOut.get('theta_1');
 theta_2 = simOut.get('theta_2');
 
-paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_jumps', plot_path, true, true, {''}, 'southwest');
-paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_jumps', plot_path, true, true, {''}, 'southwest');
+paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {''}, 'southwest');
+paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');

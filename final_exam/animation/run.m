@@ -20,11 +20,13 @@ L = 5;
 filename = 'testAnimated.gif';
 n=1;
 
-for i = 1 : 15 : size(theta_1) 
+for i = 1 : 15 : size(theta_ref) 
     h = figure(n);   
  
-    theta1 = theta_1(i)/180*pi;
-    theta2 = theta_2(i)/180*pi;
+    %theta1 = theta_1(i)/180*pi;
+    theta1 = 0;
+    %theta2 = theta_2(i)/180*pi;
+    theta2 = theta_ref(i)/180*pi;
 
 
     Ay = 1+sin(theta1)*L;
@@ -39,8 +41,8 @@ for i = 1 : 15 : size(theta_1)
 
     hold on;
     axis equal;
-    xlim([-15 15])
-    ylim([-15 15])
+    xlim([-12 12]);
+    ylim([-12 12]);
     set(gca,'visible','off');
     
     line([0 0.5],[0 1],'color','k','Linewidth',2);
@@ -70,9 +72,12 @@ for i = 1 : 15 : size(theta_1)
 
     set(gcf,'PaperUnits','centimeters');
     set(gcf,'PaperPosition',[0 0 25 11]);
+    %set(gcf, 'Position', get(0, 'Screensize'));
+    print('-dpng','-r500',cat(2, plot_path, '/animation/frame_', num2str(n), '.png'))
 
-    saveas(h, cat(2, plot_path, '/animation/frame_', num2str(n), '.png'));
+    %saveas(h, cat(2, plot_path, '/animation/frame_', num2str(n), '.png'));
     n=n+1;
+    close all;
 end
 
 

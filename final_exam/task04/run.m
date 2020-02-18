@@ -47,12 +47,14 @@ task_params.I = p2 * p1^2 / (4 * k * delta^2);
 task_params.D = 0;
 
 % run simulation
-simOut = simulate('SMAWing_03_step', do_rerun);
+simOut = simulate('SMAWing_03_PID', do_rerun);
 time = simOut.get('time');
 u1 = simOut.get('u1');
 u2 = simOut.get('u2');
 theta_1 = simOut.get('theta_1');
 theta_2 = simOut.get('theta_2');
+theta_ref = simOut.get('theta_ref'); 
 
 paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {''}, 'southwest');
 paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {''}, 'southwest');

@@ -61,4 +61,4 @@ theta_ref = simOut.get('theta_ref');
 
 paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {''}, 'southwest');
 paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
-paw({time , time}, {theta_2, theta_ref}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {'',''}, 'southwest');
+paw({time , time}, {theta_2, theta_ref}, {'theta_2','theta_{ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {'',''}, 'southwest');

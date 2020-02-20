@@ -30,9 +30,9 @@ task_params.u2 = 1;
 p_c = 0.6;
 T_c = 0.26;
 
-ta%sk_params.P = 0.45 * p_c;
-ta%sk_params.I = 0.54 * p_c / T_c;
-ta%sk_params.D = 0;
+%task_params.P = 0.45 * p_c;
+%task_params.I = 0.54 * p_c / T_c;
+%task_params.D = 0;
 
 task_params.P = 0.6 * p_c;
 task_params.I = 1.2 * p_c / T_c;

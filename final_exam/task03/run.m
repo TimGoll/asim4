@@ -24,27 +24,38 @@ plot_path = strjoin(path_arr, '/');
 task_params = struct;
 task_params.J1 = 0;
 task_params.J2 = 0;
-task_params.u1 = 0;
-task_params.u2 = 1;
+task_params.u1 = 1;
+task_params.u2 = 0;
 
 task_params.noise_1 = 0;
 task_params.noise_1_f = 0;
 task_params.noise_1_start = 0;
+task_params.noise_1_start_b = 8;
 
 task_params.noise_2 = 1;
 task_params.noise_2_f = 1;
 task_params.noise_2_start = 0;
 task_params.noise_2_start_b = 8;
 
-delta = 0.707;
-                % noisy  - sine   - jumps
-k = 586.9;      % 586.9  - 675.49 -
-p1 = 11.89;     % 11.89  - 11.67  -
-p2 = 0.3653;    % 0.3653 - 0.4316 -
+delta_1 = 0.707;
+                  % noisy  - sine   - jumps
+k_1 = 125.47;      % 586.9  - 675.49 -
+p1_1 = 2.77;     % 11.89  - 11.67  -
+p2_1 = 0.3659;    % 0.3653 - 0.4316 -
 
-task_params.P = p1^2 / (4 * k * delta^2);
-task_params.I = p2 * p1^2 / (4 * k * delta^2);
-task_params.D = 0;
+task_params.P1 = p1_1^2 / (4 * k_1 * delta_1^2);
+task_params.I1 = p2_1 * p1_1^2 / (4 * k_1 * delta_1^2);
+task_params.D1 = 0;
+
+delta_2 = 0.707;
+                  % noisy  - sine   - jumps
+k_2 = 586.9;      % 586.9  - 675.49 -
+p1_2 = 11.89;     % 11.89  - 11.67  -
+p2_2 = 0.3653;    % 0.3653 - 0.4316 -
+
+task_params.P2 = p1_2^2 / (4 * k_2 * delta_2^2);
+task_params.I2 = p2_2 * p1_2^2 / (4 * k_2 * delta_2^2);
+task_params.D2 = 0;
 
 % run simulation
 simOut = simulate('SMAWing_03_PID', do_rerun);
@@ -53,8 +64,13 @@ u1 = simOut.get('u1');
 u2 = simOut.get('u2');
 theta_1 = simOut.get('theta_1');
 theta_2 = simOut.get('theta_2');
-theta_ref = simOut.get('theta_ref');
+theta_1_ref = simOut.get('theta1_ref');
+theta_2_ref = simOut.get('theta2_ref');
 
-paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {''}, 'southwest');
-paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
-paw({time, time}, {theta_2, theta_ref}, {'theta_2','theta_{ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step_ref', plot_path, true, true, {'',''}, 'southeast');
+paw({time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step', plot_path, true, true, {''}, 'southwest');
+paw({time}, {u1}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+paw({time, time}, {theta_1, theta_1_ref}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v2_PID_step_ref', plot_path, true, true, {'',''}, 'southeast');
+
+%paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_v2_PID_step', plot_path, true, true, {''}, 'southwest');
+%paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+%paw({time, time}, {theta_2, theta_2_ref}, {'theta_2','theta_{2,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_v2_PID_step_ref', plot_path, true, true, {'',''}, 'southeast');

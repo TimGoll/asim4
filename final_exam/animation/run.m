@@ -20,13 +20,13 @@ L = 5;
 filename = 'testAnimated.gif';
 n=1;
 
-for i = 1 : 15 : size(theta_1) 
+for i = 1 : 15 : size(theta_ref) 
     h = figure(n);   
  
-    theta1 = theta_1(i)/180*pi;
-    %theta1 = 0;
-    theta2 = theta_2(i)/180*pi;
-    %theta2 = theta_ref(i)/180*pi;
+    %theta1 = theta_1(i)/180*pi;
+    theta1 = 0;
+    %theta2 = theta_2(i)/180*pi;
+    theta2 = theta_ref(i)/180*pi;
 
 
     Ay = 1+sin(theta1)*L;

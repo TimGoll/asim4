@@ -3,7 +3,7 @@ clear ALL;
 close ALL;
 warning ('off','all');
 
-do_rerun = true;
+do_rerun = false;
 
 % load parameter
 Parameter_PC2;
@@ -23,9 +23,17 @@ plot_path = strjoin(path_arr, '/');
 % set extra variables
 task_params = struct;
 task_params.J1 = 0;
+task_params.J2 = 0;
+task_params.u1 = 0;
+task_params.u2 = 1;
+task_params.J_max = 2;
+task_params.epsilon = 1;
 
 % run simulation
-simOut = simulate('SMAWing_07_PID', do_rerun);
-time_t7 = simOut.get('time');
+simOut = simulate('SMAWing_2_01', do_rerun);
+time = simOut.get('time');
+ref = simOut.get('ref');
+theta_1 = simOut.get('theta_1');
+theta_2 = simOut.get('theta_2');
 
-%paw({time_t6, time_t7, time_t6}, {theta_ref_t6, theta_2_t7, theta_2_t6}, {'theta_{2,ref}', 'theta_{2,ZiNi}', 'theta_{2,model}'}, 'time [s]', 'theta', task_name, 'ziegler_nichols_theta2_controlled', plot_path, true, true, {':', '', ''}, 'southwest');
+paw({time, time}, {ref, theta_2}, {'theta_{2,ref}', 'theta_{2,pos}'}, 'time [s]', 'theta', task_name, 'sliding_mode_e=1', plot_path, true, true, {':', ''}, 'southwest');

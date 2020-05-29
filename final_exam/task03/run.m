@@ -3,7 +3,7 @@ clear ALL;
 close ALL;
 warning ('off','all');
 
-do_rerun = true;
+do_rerun = false;
 
 % load parameter
 Parameter_PC2;
@@ -87,9 +87,9 @@ theta_2 = simOut.get('theta_2');
 theta_1_ref = simOut.get('theta1_ref');
 theta_2_ref = simOut.get('theta2_ref');
 
-paw({time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_step_2', plot_path, true, false, {''}, 'southwest');
-paw({time}, {u1}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v3_noise_PID_step_2', plot_path, true, false, {''}, 'southwest');
-paw({time, time}, {theta_1, theta_1_ref}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_step_ref_2', plot_path, true, false, {'',''}, 'southeast');
+paw({time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_step_2', plot_path, true, true, {''}, 'southwest');
+paw({time}, {u1}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v3_noise_PID_step_2', plot_path, true, true, {''}, 'southwest');
+paw({time, time}, {theta_1, theta_1_ref}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_step_ref_2', plot_path, true, true, {'',''}, 'southeast');
 
 %paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_v2_PID_step', plot_path, true, true, {''}, 'southwest');
 %paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');

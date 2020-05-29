@@ -43,6 +43,10 @@ task_params.I = 0.4 * p_c / T_c;
 task_params.D = 1 * p_c * T_c;
 %task_params.I = 0;
 
+disp("P: " + task_params.P);
+disp("I: " + task_params.I);
+disp("D: " + task_params.D);
+
 % run simulation
 simOut = simulate('SMAWing_04b_u1_PID', do_rerun);
 time = simOut.get('time');
@@ -52,5 +56,5 @@ theta_1 = simOut.get('theta_1');
 theta_2 = simOut.get('theta_2');
 theta_ref = simOut.get('theta_ref');
 
-paw({time, time}, {theta_1, theta_ref}, {'theta_1', 'theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'ziegler_nichols_theta1_controller', plot_path, true, false, {'', ''}, 'southwest');
-paw({time}, {u2}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'ziegler_nichols_u1_controlled', plot_path, true, false, {''}, 'southwest');
+paw({time, time}, {theta_1, theta_ref}, {'theta_1', 'theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'ziegler_nichols_theta1_controller', plot_path, true, true, {'', ''}, 'southwest');
+paw({time}, {u2}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'ziegler_nichols_u1_controlled', plot_path, true, true, {''}, 'southwest');

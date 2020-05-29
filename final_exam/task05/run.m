@@ -3,7 +3,7 @@ clear ALL;
 close ALL;
 warning ('off','all');
 
-do_rerun = false;
+do_rerun = true;
 
 % load parameter
 Parameter_PC2;
@@ -85,3 +85,29 @@ theta2_ref = simOut.get('theta2_ref');
 paw({time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_trajectory', plot_path, true, true, {''}, 'southwest');
 paw({time}, {u1}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v3_noise_PID_step', plot_path, true, true, {''}, 'southwest');
 paw({time , time}, {theta_1, theta1_ref}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_thetaref_v3_PID_trajectory', plot_path, true, true, {'',''}, 'southwest');
+
+% change PID zo ZN system
+p_c = 0.3;
+T_c = 0.874;
+
+task_params.P1 = 0.6 * p_c;
+task_params.I1 = 0.4 * p_c / T_c;
+task_params.D1 = 1 * p_c * T_c;
+
+% run simulation
+simOut_2 = simulate('SMAWing_03_PID', do_rerun);
+time_2 = simOut_2.get('time');
+u1_2 = simOut_2.get('u1');
+u2_2 = simOut_2.get('u2');
+theta_1_2 = simOut_2.get('theta_1');
+theta_2_2 = simOut_2.get('theta_2');
+theta1_ref_2 = simOut_2.get('theta1_ref'); 
+theta2_ref_2 = simOut_2.get('theta2_ref');
+
+%paw({time}, {theta_2}, {'theta_2'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_v2_PID_trajectory', plot_path, true, true, {''}, 'southwest');
+%paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+%paw({time , time}, {theta_2, theta2_ref}, {'theta_2','theta_{2,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_thetaref_v2_PID_trajjectory', plot_path, true, true, {'',''}, 'southwest');
+
+paw({time_2}, {theta_1_2}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_trajectory', plot_path, true, true, {''}, 'southwest');
+paw({time_2}, {u1_2}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v3_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+paw({time_2 , time_2}, {theta_1_2, theta1_ref_2}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_thetaref_v3_PID_trajectory', plot_path, true, true, {'',''}, 'southwest');

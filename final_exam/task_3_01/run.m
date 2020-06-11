@@ -3,7 +3,7 @@ clear ALL;
 close ALL;
 warning ('off','all');
 
-do_rerun = false;
+do_rerun = true;
 
 % load parameter
 Parameter_PC2;

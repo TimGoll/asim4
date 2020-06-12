@@ -3,12 +3,10 @@ function [sim_data] = simulate(name, do_rerun, prefix)
         prefix = "";
     end
 
-    combined = append(prefix, '_', name);
-
     if do_rerun
         sim_data = sim(name, 'SimulationMode', 'normal');
-        assignin('base', combined, sim_data);
+        assignin('base', name, sim_data);
     else
-        sim_data = evalin('base', combined);
+        sim_data = evalin('base', name);
     end
 end

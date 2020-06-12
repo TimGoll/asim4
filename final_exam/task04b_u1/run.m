@@ -39,8 +39,8 @@ T_c = 0.874;
 %task_params.D = 0;
 
 task_params.P = 0.6 * p_c;
-task_params.I = 0.4 * p_c / T_c;
-task_params.D = 1 * p_c * T_c;
+task_params.I = 1.2 * p_c / T_c;
+task_params.D = 0.075 * p_c * T_c;
 %task_params.I = 0;
 
 disp("P: " + task_params.P);

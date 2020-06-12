@@ -84,9 +84,9 @@ theta2_ref = simOut.get('theta2_ref');
 %paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
 %paw({time , time}, {theta_2, theta2_ref}, {'theta_2','theta_{2,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_thetaref_v2_PID_trajjectory', plot_path, true, true, {'',''}, 'southwest');
 
-paw({time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_trajectory', plot_path, true, true, {''}, 'southwest');
-paw({time}, {u1}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v3_noise_PID_step', plot_path, true, true, {''}, 'southwest');
-paw({time , time}, {theta_1, theta1_ref}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_thetaref_v3_PID_trajectory', plot_path, true, true, {'',''}, 'southwest');
+%paw({time}, {theta_1}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_v3_PID_trajectory', plot_path, true, true, {''}, 'southwest');
+%paw({time}, {u1}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_v3_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+%paw({time , time}, {theta_1, theta1_ref}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_thetaref_v3_PID_trajectory', plot_path, true, true, {'',''}, 'southwest');
 
 % change PID zo ZN system
 p_c = 0.3;
@@ -110,8 +110,8 @@ theta2_ref_2 = simOut_2.get('theta2_ref');
 %paw({time}, {u2}, {'u_2'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u2_v2_noise_PID_step', plot_path, true, true, {''}, 'southwest');
 %paw({time , time}, {theta_2, theta2_ref}, {'theta_2','theta_{2,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta2_thetaref_v2_PID_trajjectory', plot_path, true, true, {'',''}, 'southwest');
 
-paw({time_2}, {theta_1_2}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_zini_v3_PID_trajectory', plot_path, true, true, {''}, 'southwest');
-paw({time_2}, {u1_2}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_zini_v3_noise_PID_step', plot_path, true, true, {''}, 'southwest');
-paw({time_2 , time_2}, {theta_1_2, theta1_ref_2}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_zini_thetaref_v3_PID_trajectory', plot_path, true, true, {'',''}, 'southwest');
+%paw({time_2}, {theta_1_2}, {'theta_1'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_zini_v3_PID_trajectory', plot_path, true, true, {''}, 'southwest');
+%paw({time_2}, {u1_2}, {'u_1'}, 'time [s]', 'u [W]', task_name, 'equilibrium_u1_zini_v3_noise_PID_step', plot_path, true, true, {''}, 'southwest');
+%paw({time_2 , time_2}, {theta_1_2, theta1_ref_2}, {'theta_1','theta_{1,ref}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_zini_thetaref_v3_PID_trajectory', plot_path, true, true, {'',''}, 'southwest');
 
-paw({time_2 , time_2, time}, {theta1_ref_2, theta_1_2, theta_1}, {'theta_{1,ref}','theta_1_{ZiNi}','theta_1_{model}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_thetaref_v3_comparison', plot_path, true, true, {':','',''}, 'southwest');
+%paw({time_2 , time_2, time}, {theta1_ref_2, theta_1_2, theta_1}, {'theta_{1,ref}','theta_1_{ZiNi}','theta_1_{model}'}, 'time [s]', 'theta', task_name, 'equilibrium_theta1_thetaref_v3_comparison', plot_path, true, true, {':','',''}, 'southwest');

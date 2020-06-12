@@ -3,7 +3,7 @@ clear ALL;
 close ALL;
 warning ('off','all');
 
-do_rerun = true;
+do_rerun = false;
 
 % load parameter
 Parameter_PC2;
@@ -25,12 +25,6 @@ task_params = struct;
 
 task_params.J1 = 0;
 task_params.J2 = 0;
-task_params.u1 = 1;
-task_params.u2 = 1;
-
-task_params.init_theta1 = 0;
-task_params.init_theta2 = 0;
-task_params.init_TE = 293;
 
 % pid values
 tau_star = 0.2;
@@ -53,35 +47,260 @@ task_params.P2 = p1_2^2 / (4 * k_2 * delta_2^2);
 task_params.I2 = p2_2 * p1_2^2 / (4 * k_2 * delta_2^2);
 task_params.D2 = 0;
 
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
+task_params.init_TE = 293;
+task_params.u1 = 1;
+task_params.u2 = 0;
+
 % run simulation
 simOut = simulate('SMAWing_4_01', do_rerun, 'v1');
-v1_time = simOut.get('time');
-v1_theta1ref = simOut.get('theta1_ref');
-v1_theta2ref = simOut.get('theta2_ref');
-v1_theta1 = simOut.get('theta_1');
-v1_theta2 = simOut.get('theta_2');
+u1_v1_time = simOut.get('time');
+u1_v1_theta1ref = simOut.get('theta1_ref');
+u1_v1_theta2ref = simOut.get('theta2_ref');
+u1_v1_theta1 = simOut.get('theta_1');
+u1_v1_theta2 = simOut.get('theta_2');
+
+disp("finished number 1");
+
+% ------------------------
 
 task_params.init_theta1 = 0;
 task_params.init_theta2 = 0;
 task_params.init_TE = 313;
+task_params.u1 = 1;
+task_params.u2 = 0;
 
 simOut = simulate('SMAWing_4_01', do_rerun, 'v2');
-v2_time = simOut.get('time');
-v2_theta1ref = simOut.get('theta1_ref');
-v2_theta2ref = simOut.get('theta2_ref');
-v2_theta1 = simOut.get('theta_1');
-v2_theta2 = simOut.get('theta_2');
+u1_v2_time = simOut.get('time');
+u1_v2_theta1ref = simOut.get('theta1_ref');
+u1_v2_theta2ref = simOut.get('theta2_ref');
+u1_v2_theta1 = simOut.get('theta_1');
+u1_v2_theta2 = simOut.get('theta_2');
+
+disp("finished number 2");
+
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
+task_params.init_TE = 333;
+task_params.u1 = 1;
+task_params.u2 = 0;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v3');
+u1_v3_time = simOut.get('time');
+u1_v3_theta1ref = simOut.get('theta1_ref');
+u1_v3_theta2ref = simOut.get('theta2_ref');
+u1_v3_theta1 = simOut.get('theta_1');
+u1_v3_theta2 = simOut.get('theta_2');
+
+disp("finished number 3");
+
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
+task_params.init_TE = 273;
+task_params.u1 = 1;
+task_params.u2 = 0;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v4');
+u1_v4_time = simOut.get('time');
+u1_v4_theta1ref = simOut.get('theta1_ref');
+u1_v4_theta2ref = simOut.get('theta2_ref');
+u1_v4_theta1 = simOut.get('theta_1');
+u1_v4_theta2 = simOut.get('theta_2');
+
+disp("finished number 4");
+
+% ------------------------
+
+task_params.init_theta1 = 0.0001;
+task_params.init_theta2 = 0.0001;
+task_params.init_TE = 293;
+task_params.u1 = 1;
+task_params.u2 = 0;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v5');
+u1_v5_time = simOut.get('time');
+u1_v5_theta1ref = simOut.get('theta1_ref');
+u1_v5_theta2ref = simOut.get('theta2_ref');
+u1_v5_theta1 = simOut.get('theta_1');
+u1_v5_theta2 = simOut.get('theta_2');
+
+disp("finished number 5");
+
+% ------------------------
 
 task_params.init_theta1 = 0.001;
 task_params.init_theta2 = 0.001;
+task_params.init_TE = 293;
+task_params.u1 = 1;
+task_params.u2 = 0;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v6');
+u1_v6_time = simOut.get('time');
+u1_v6_theta1ref = simOut.get('theta1_ref');
+u1_v6_theta2ref = simOut.get('theta2_ref');
+u1_v6_theta1 = simOut.get('theta_1');
+u1_v6_theta2 = simOut.get('theta_2');
+
+disp("finished number 6");
+
+% ------------------------
+
+task_params.init_theta1 = 0.01;
+task_params.init_theta2 = 0.01;
+task_params.init_TE = 293;
+task_params.u1 = 1;
+task_params.u2 = 0;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v7');
+u1_v7_time = simOut.get('time');
+u1_v7_theta1ref = simOut.get('theta1_ref');
+u1_v7_theta2ref = simOut.get('theta2_ref');
+u1_v7_theta1 = simOut.get('theta_1');
+u1_v7_theta2 = simOut.get('theta_2');
+
+disp("finished number 7");
+
+% ------------------------
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
+task_params.init_TE = 293;
+task_params.u1 = 0;
+task_params.u2 = 1;
+
+% run simulation
+simOut = simulate('SMAWing_4_01', do_rerun, 'v8');
+u2_v1_time = simOut.get('time');
+u2_v1_theta1ref = simOut.get('theta1_ref');
+u2_v1_theta2ref = simOut.get('theta2_ref');
+u2_v1_theta1 = simOut.get('theta_1');
+u2_v1_theta2 = simOut.get('theta_2');
+
+disp("finished number 8");
+
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
 task_params.init_TE = 313;
+task_params.u1 = 0;
+task_params.u2 = 1;
 
-simOut = simulate('SMAWing_4_01', do_rerun, 'v3');
-v3_time = simOut.get('time');
-v3_theta1ref = simOut.get('theta1_ref');
-v3_theta2ref = simOut.get('theta2_ref');
-v3_theta1 = simOut.get('theta_1');
-v3_theta2 = simOut.get('theta_2');
+simOut = simulate('SMAWing_4_01', do_rerun, 'v9');
+u2_v2_time = simOut.get('time');
+u2_v2_theta1ref = simOut.get('theta1_ref');
+u2_v2_theta2ref = simOut.get('theta2_ref');
+u2_v2_theta1 = simOut.get('theta_1');
+u2_v2_theta2 = simOut.get('theta_2');
 
-paw({v1_time, v1_time, v2_time, v3_time}, {v1_theta1ref, v1_theta1, v2_theta1, v3_theta1}, {'theta_{1,ref}', 'theta_{1,normal}', 'theta_{1,noise(TE)}', 'theta_{1,noise(all)}'}, 'time [s]', 'theta', task_name, 'theta1_with_noise_comparison', plot_path, true, true, {':', '', '', ''}, 'southwest');
-paw({v1_time, v1_time, v2_time, v3_time}, {v1_theta2ref, v1_theta2, v2_theta2, v3_theta2}, {'theta_{2,ref}', 'theta_{2,normal}', 'theta_{2,noise(TE)}', 'theta_{1,noise(all)}'}, 'time [s]', 'theta', task_name, 'theta2_with_noise_comparison', plot_path, true, true, {':', '', '', ''}, 'southwest');
+disp("finished number 9");
+
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
+task_params.init_TE = 333;
+task_params.u1 = 0;
+task_params.u2 = 1;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v10');
+u2_v3_time = simOut.get('time');
+u2_v3_theta1ref = simOut.get('theta1_ref');
+u2_v3_theta2ref = simOut.get('theta2_ref');
+u2_v3_theta1 = simOut.get('theta_1');
+u2_v3_theta2 = simOut.get('theta_2');
+
+disp("finished number 10");
+
+% ------------------------
+
+task_params.init_theta1 = 0;
+task_params.init_theta2 = 0;
+task_params.init_TE = 273;
+task_params.u1 = 0;
+task_params.u2 = 1;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v11');
+u2_v4_time = simOut.get('time');
+u2_v4_theta1ref = simOut.get('theta1_ref');
+u2_v4_theta2ref = simOut.get('theta2_ref');
+u2_v4_theta1 = simOut.get('theta_1');
+u2_v4_theta2 = simOut.get('theta_2');
+
+disp("finished number 11");
+
+% ------------------------
+
+task_params.init_theta1 = 0.0001;
+task_params.init_theta2 = 0.0001;
+task_params.init_TE = 293;
+task_params.u1 = 0;
+task_params.u2 = 1;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v12');
+u2_v5_time = simOut.get('time');
+u2_v5_theta1ref = simOut.get('theta1_ref');
+u2_v5_theta2ref = simOut.get('theta2_ref');
+u2_v5_theta1 = simOut.get('theta_1');
+u2_v5_theta2 = simOut.get('theta_2');
+
+disp("finished number 12");
+
+% ------------------------
+
+task_params.init_theta1 = 0.001;
+task_params.init_theta2 = 0.001;
+task_params.init_TE = 293;
+task_params.u1 = 0;
+task_params.u2 = 1;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v13');
+u2_v6_time = simOut.get('time');
+u2_v6_theta1ref = simOut.get('theta1_ref');
+u2_v6_theta2ref = simOut.get('theta2_ref');
+u2_v6_theta1 = simOut.get('theta_1');
+u2_v6_theta2 = simOut.get('theta_2');
+
+disp("finished number 13");
+
+% ------------------------
+
+task_params.init_theta1 = 0.01;
+task_params.init_theta2 = 0.01;
+task_params.init_TE = 293;
+task_params.u1 = 0;
+task_params.u2 = 1;
+
+simOut = simulate('SMAWing_4_01', do_rerun, 'v14');
+u2_v7_time = simOut.get('time');
+u2_v7_theta1ref = simOut.get('theta1_ref');
+u2_v7_theta2ref = simOut.get('theta2_ref');
+u2_v7_theta1 = simOut.get('theta_1');
+u2_v7_theta2 = simOut.get('theta_2');
+
+disp("finished number 14");
+
+% ------------------------
+
+
+
+paw({u1_v1_time, u1_v1_time, u1_v2_time, u1_v3_time}, {u1_v1_theta1ref, u1_v1_theta1, u1_v2_theta1, u1_v3_theta1}, {'theta_{1,ref}', 'theta_{1,T=293K}', 'theta_{1,T=313K}', 'theta_{1,T=333K}'}, 'time [s]', 'theta', task_name, 'theta1_u1_TE_with_noise_comparison', plot_path, true, true, {':', '', '', ''}, 'southwest');
+paw({u1_v1_time, u1_v1_time, u1_v5_time, u1_v6_time}, {u1_v1_theta1ref, u1_v1_theta1, u1_v5_theta1, u1_v6_theta1}, {'theta_{1,ref}', 'theta_{1,\tau=0m}', 'theta_{1,\tau=0.0001m}', 'theta_{1,\tau=0.001m}'}, 'time [s]', 'theta', task_name, 'theta1_u1_tau_with_noise_comparison', plot_path, true, true, {':', '', '', ''}, 'southwest');
+
+paw({u2_v1_time, u2_v1_time, u2_v2_time, u2_v3_time}, {u2_v1_theta2ref, u2_v1_theta2, u2_v2_theta2, u2_v3_theta2}, {'theta_{2,ref}', 'theta_{2,T=293K}', 'theta_{2,T=313K}', 'theta_{2,T=333K}'}, 'time [s]', 'theta', task_name, 'theta2_u2_TE_with_noise_comparison', plot_path, true, true, {':', '', '', ''}, 'southwest');
+paw({u2_v1_time, u2_v1_time, u2_v5_time, u2_v6_time}, {u2_v1_theta2ref, u2_v1_theta2, u2_v5_theta2, u2_v6_theta2}, {'theta_{2,ref}', 'theta_{2,\tau=0m}', 'theta_{2,\tau=0.0001m}', 'theta_{2,\tau=0.001m}'}, 'time [s]', 'theta', task_name, 'theta2_u2_tau_with_noise_comparison', plot_path, true, true, {':', '', '', ''}, 'southwest');
+
+paw({u1_v1_time, u1_v1_time, u1_v2_time, u1_v3_time}, {u1_v1_theta1ref, u1_v1_theta1, u1_v2_theta1, u1_v3_theta1}, {'theta_{1,ref}', 'theta_{1,T=293K}', 'theta_{1,T=313K}', 'theta_{1,T=333K}'}, 'time [s]', 'theta', task_name, 'theta1_u1_TE_with_noise_comparison_no_legend', plot_path, false, true, {':', '', '', ''}, 'southwest');
+paw({u1_v1_time, u1_v1_time, u1_v5_time, u1_v6_time}, {u1_v1_theta1ref, u1_v1_theta1, u1_v5_theta1, u1_v6_theta1}, {'theta_{1,ref}', 'theta_{1,\tau=0m}', 'theta_{1,\tau=0.0001m}', 'theta_{1,\tau=0.001m}'}, 'time [s]', 'theta', task_name, 'theta1_u1_tau_with_noise_comparison_no_legend', plot_path, false, true, {':', '', '', ''}, 'southwest');
+
+paw({u2_v1_time, u2_v1_time, u2_v2_time, u2_v3_time}, {u2_v1_theta2ref, u2_v1_theta2, u2_v2_theta2, u2_v3_theta2}, {'theta_{2,ref}', 'theta_{2,T=293K}', 'theta_{2,T=313K}', 'theta_{2,T=333K}'}, 'time [s]', 'theta', task_name, 'theta2_u2_TE_with_noise_comparison_no_legend', plot_path, false, true, {':', '', '', ''}, 'southwest');
+paw({u2_v1_time, u2_v1_time, u2_v5_time, u2_v6_time}, {u2_v1_theta2ref, u2_v1_theta2, u2_v5_theta2, u2_v6_theta2}, {'theta_{2,ref}', 'theta_{2,\tau=0m}', 'theta_{2,\tau=0.0001m}', 'theta_{2,\tau=0.001m}'}, 'time [s]', 'theta', task_name, 'theta2_u2_tau_with_noise_comparison_no_legend', plot_path, false, true, {':', '', '', ''}, 'southwest');
+

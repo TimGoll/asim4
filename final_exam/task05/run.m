@@ -1,5 +1,5 @@
 clc;
-clear ALL;
+%clear ALL;
 close ALL;
 warning ('off','all');
 
